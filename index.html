@@ -30,6 +30,10 @@
             background-color: green;
             position: absolute;
         }
+
+        #audioElement{
+            display: none;
+        }
     </style>
 </head>
 
@@ -42,10 +46,14 @@
 
     <!-- Divs de las teclas -->
     <div class="tecla" id="tecla1"></div>
+    <audio id="audioElement" src="audio/coin-collect-retro-8-bit-sound-effect-145251.mp3"></audio>
+
 
     <script>
         // Obtener el elemento del div de colisión
         var tecla1 = document.getElementById('tecla1');
+        var audioElement = document.getElementById('audioElement');
+
 
         function positionsCol() {
             // Obtener el elemento del div de colisión
@@ -89,9 +97,15 @@
             // Mostrar el código de la tecla en la consola
             console.log("Tecla presionada - Código: " + keyCode);
 
+            if (keyCode == 82){
+                tecla1.style.display = "block";
+                xPos = 900;
+            }
+
             if (keyCode == 90 && (tecla1.style.left > (100 + 'px') && tecla1.style.left < (200 + 'px'))) {
                 tecla1.style.display = "none";
                 console.log("Colision", tecla1.style.left);
+                audioElement.play();
             } else {
                 actualizarPosicion();
             }

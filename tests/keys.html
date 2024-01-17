@@ -16,7 +16,19 @@
     <div id="colisionDiv"></div>
 
     <script>
-        
+        // Agrega un event listener para el evento keydown (tecla presionada)
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'z') {
+                document.getElementById('colisionDiv').style.backgroundColor = 'blue';
+            }
+        });
+
+        // Agrega un event listener para el evento keyup (tecla liberada)
+        document.addEventListener('keyup', function (event) {
+            if (event.key === 'z') {
+                document.getElementById('colisionDiv').style.backgroundColor = 'red';
+            }
+        });
     </script>
 </body>
 

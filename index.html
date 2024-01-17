@@ -31,8 +31,16 @@
             position: absolute;
         }
 
-        #audioElement{
+        #audioElement {
             display: none;
+        }
+
+        #partituras {
+            width: 1000px;
+            height: 500px;
+            background-color: black;
+            position: absolute;
+
         }
     </style>
 </head>
@@ -40,12 +48,18 @@
 <body>
     <h1>Rhythm games</h1>
 
+    <!-- Divs de las teclas -->
+    <div id="partituras"></div>
+
     <!-- Div colision -->
     <div id="colisionDiv"></div>
     <div id="colisionDiv2"></div>
 
     <!-- Divs de las teclas -->
     <div class="tecla" id="tecla1"></div>
+    <div class="tecla" id="tecla2"></div>
+
+    <!-- Audio -->
     <audio id="audioElement" src="audio/coin-collect-retro-8-bit-sound-effect-145251.mp3"></audio>
 
 
@@ -53,12 +67,11 @@
         // Obtener el elemento del div de colisión
         var tecla1 = document.getElementById('tecla1');
         var audioElement = document.getElementById('audioElement');
-
+        // Obtener el elemento del div de colisión
+        var colisionDiv = document.getElementById('colisionDiv');
+        var colisionDiv2 = document.getElementById('colisionDiv2');
 
         function positionsCol() {
-            // Obtener el elemento del div de colisión
-            var colisionDiv = document.getElementById('colisionDiv');
-            var colisionDiv2 = document.getElementById('colisionDiv2');
 
             // Establecer la posición inicial
             colisionDiv.style.left = 100 + 'px';
@@ -67,52 +80,26 @@
             colisionDiv2.style.left = 100 + 'px';
             colisionDiv2.style.top = 350 + 'px';
 
-            tecla1.style.left = 300 + 'px';
+            tecla1.style.left = 900 + 'px';
             tecla1.style.top = 210 + 'px';
         }
 
         // Llamar a la función para establecer la posición inicial
         positionsCol();
-
-        var xPos = 900;
-        // Función movimiento 
-        function actualizarPosicion() {
-            xPos -= 5; // ejemplo de ajuste, puedes cambiar según tus necesidades
-            //colisionDiv.style.left = xPos + 'px';
-            tecla1.style.left = xPos + 'px';
-            //console.log(xPos);
-
-            // Llama a esta función nuevamente para actualizar la posición en el próximo fotograma
-            if(tecla1.style.display != "none") {
-                requestAnimationFrame(actualizarPosicion);
+        
+        // Agrega un event listener para el evento keydown (tecla presionada)
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'z') {
+                document.getElementById('colisionDiv').style.backgroundColor = 'blue';
             }
-        }
+        });
 
-
-        // Función que se ejecuta cuando se presiona una tecla
-        function onKeyDownHandler(event) {
-            // Obtener el código de la tecla presionada
-            var keyCode = event.keyCode;
-
-            // Mostrar el código de la tecla en la consola
-            console.log("Tecla presionada - Código: " + keyCode);
-
-            if (keyCode == 82){
-                tecla1.style.display = "block";
-                xPos = 900;
+        // Agrega un event listener para el evento keyup (tecla liberada)
+        document.addEventListener('keyup', function (event) {
+            if (event.key === 'z') {
+                document.getElementById('colisionDiv').style.backgroundColor = 'red';
             }
-
-            if (keyCode == 90 && (tecla1.style.left > (100 + 'px') && tecla1.style.left < (200 + 'px'))) {
-                tecla1.style.display = "none";
-                console.log("Colision", tecla1.style.left);
-                audioElement.play();
-            } else {
-                actualizarPosicion();
-            }
-        }
-
-        // Asignar el evento keydown al documento
-        document.addEventListener("keydown", onKeyDownHandler);
+        });
     </script>
 </body>
 

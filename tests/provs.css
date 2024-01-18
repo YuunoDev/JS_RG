@@ -1,6 +1,27 @@
 #colisionDiv {
     width: 100px;
     height: 100px;
-    background-color: red;
+    background-color: rgb(197, 0, 0);
+    position: absolute;
+}
+
+#colisionDiv2 {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(0, 0, 197);
+    position: absolute;
+}
+
+#colisionDiv3 {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(0, 197, 0);
+    position: absolute;
+}
+
+#colisionDiv4 {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(197, 197, 0);
     position: absolute;
 }

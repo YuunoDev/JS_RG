@@ -14,19 +14,75 @@
     <h1>Teclas</h1>
 
     <div id="colisionDiv"></div>
+    <div id="colisionDiv2"></div>
+
+    <div id="colisionDiv3"></div>
+    <div id="colisionDiv4"></div>
 
     <script>
+        // Obtener el elemento del div de colisión
+        var colisionDiv = document.getElementById('colisionDiv');
+        var colisionDiv2 = document.getElementById('colisionDiv2');
+        var colisionDiv3 = document.getElementById('colisionDiv3');
+        var colisionDiv4 = document.getElementById('colisionDiv4');
+
+        function positionsCol() {
+
+            // Establecer la posición inicial
+            colisionDiv.style.left = 450 + 'px';
+            colisionDiv.style.top = 200 + 'px';
+
+            colisionDiv2.style.left = 450 + 'px';
+            colisionDiv2.style.top = 350 + 'px';
+
+            colisionDiv3.style.left = 700 + 'px';
+            colisionDiv3.style.top = 200 + 'px';
+
+            colisionDiv4.style.left = 700 + 'px';
+            colisionDiv4.style.top = 350 + 'px';
+
+            // tecla1.style.left = 900 + 'px';
+            // tecla1.style.top = 210 + 'px';
+        }
+
+        // Llamar a la función para establecer la posición inicial
+        positionsCol();
+
         // Agrega un event listener para el evento keydown (tecla presionada)
         document.addEventListener('keydown', function (event) {
             if (event.key === 'z') {
-                document.getElementById('colisionDiv').style.backgroundColor = 'blue';
+                document.getElementById('colisionDiv').style.backgroundColor = 'rgb(255, 0, 0)';
+            }
+
+            if (event.key === 'x') {
+                document.getElementById('colisionDiv2').style.backgroundColor = 'rgb(0, 0, 255)';
+            }
+
+            if (event.key === 'n') {
+                document.getElementById('colisionDiv3').style.backgroundColor = 'rgb(0, 255, 0)';
+            }
+
+            if (event.key === 'm') {
+                document.getElementById('colisionDiv4').style.backgroundColor = 'rgb(255, 255, 0)';
             }
         });
 
         // Agrega un event listener para el evento keyup (tecla liberada)
         document.addEventListener('keyup', function (event) {
             if (event.key === 'z') {
-                document.getElementById('colisionDiv').style.backgroundColor = 'red';
+                document.getElementById('colisionDiv').style.backgroundColor = 'rgb(197, 0, 0)';
+            }
+
+            if (event.key === 'x') {
+                document.getElementById('colisionDiv2').style.backgroundColor = 'rgb(0, 0, 197)';
+            }
+
+            if (event.key === 'n') {
+                document.getElementById('colisionDiv3').style.backgroundColor = 'rgb(0, 197, 0)';
+            }
+
+            if (event.key === 'm') {
+                document.getElementById('colisionDiv4').style.backgroundColor = 'rgb(197, 197, 0)';
             }
         });
     </script>

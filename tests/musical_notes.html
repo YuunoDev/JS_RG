@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generar varios objetos y guardar en un archivo</title>
+</head>
+<body>
+
+<script>
+  // Crear un arreglo para almacenar varios objetos
+  var objetosDiv = [];
+
+  // Función para crear y agregar un objeto div al arreglo
+  function crearYAgregarDiv() {
+    var nuevoDiv = document.createElement('div');
+    nuevoDiv.id = 'div_' + objetosDiv.length;
+    nuevoDiv.className = 'mi-clase';
+    nuevoDiv.textContent = 'Hola, soy un div generado desde JavaScript';
+
+    // Propiedades adicionales
+    nuevoDiv.style.backgroundColor = 'lightblue';  // Color de fondo
+    nuevoDiv.style.color = 'darkblue';            // Color del texto
+    nuevoDiv.style.fontSize = '16px';             // Tamaño de fuente
+
+    // Información de tiempo (ejemplo: tiempo actual en milisegundos)
+    var tiempoActual = new Date().getTime();
+
+    // Agregar el nuevo objeto al arreglo
+    objetosDiv.push({
+      id: nuevoDiv.id,
+      clase: nuevoDiv.className,
+      contenido: nuevoDiv.textContent,
+      estilo: {
+        backgroundColor: nuevoDiv.style.backgroundColor,
+        color: nuevoDiv.style.color,
+        fontSize: nuevoDiv.style.fontSize
+      },
+      tiempo: tiempoActual
+    });
+
+    // Agregar el nuevo div al cuerpo del documento
+    document.body.appendChild(nuevoDiv);
+  }
+
+  // Llamar a la función para crear y agregar un div
+  crearYAgregarDiv();
+
+  // Llamar a la función varias veces si es necesario
+  crearYAgregarDiv();
+  crearYAgregarDiv();
+
+  // Convertir el arreglo a JSON
+  var arregloJSON = JSON.stringify(objetosDiv);
+
+  // Crear un enlace para descargar el archivo
+  var enlaceDescarga = document.createElement('a');
+  enlaceDescarga.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(arregloJSON);
+  enlaceDescarga.download = 'objetosDiv.json';
+  enlaceDescarga.textContent = 'Descargar Archivo';
+
+  // Agregar el enlace al cuerpo del documento
+  document.body.appendChild(enlaceDescarga);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Creador -->
+    <meta name="author" content="Adrian Alonso Arambula">
+    <link rel="stylesheet" href="../provs.css">
+    <style>
+        #movingDivB {
+            width: 90px;
+            height: 90px;
+            background-color: rgb(0, 197, 197);
+            position: absolute;
+        }
+
+        #movingDivR {
+            width: 90px;
+            height: 90px;
+            background-color: rgb(255, 0, 0);
+            position: absolute;
+        }
+
+        #movingDivG {
+            width: 90px;
+            height: 90px;
+            background-color: rgb(0, 255, 0);
+            position: absolute;
+        }
+
+        #movingDivY {
+            width: 90px;
+            height: 90px;
+            background-color: rgb(255, 255, 0);
+            position: absolute;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Teclas</h1>
+
+    <div id="colisionDiv"></div>
+    <div id="colisionDiv2"></div>
+    <div id="colisionDiv3"></div>
+    <div id="colisionDiv4"></div>
+    
+    <!-- Nuevo div que se moverá -->
+    <div id="movingDivR"></div>
+    <div id="movingDivB"></div>
+    <div id="movingDivG"></div>
+    <div id="movingDivY"></div>
+
+    <script>
+        var colisionDiv = document.getElementById('colisionDiv');
+        var colisionDiv2 = document.getElementById('colisionDiv2');
+        var colisionDiv3 = document.getElementById('colisionDiv3');
+        var colisionDiv4 = document.getElementById('colisionDiv4');
+
+        var movingDivB = document.getElementById('movingDivB');
+        var movingDivR = document.getElementById('movingDivR');
+        var movingDivG = document.getElementById('movingDivG');
+        var movingDivY = document.getElementById('movingDivY');
+
+        function positionsCol() {
+            colisionDiv.style.left = 450 + 'px';
+            colisionDiv.style.top = 200 + 'px';
+
+            colisionDiv2.style.left = 450 + 'px';
+            colisionDiv2.style.top = 350 + 'px';
+
+            colisionDiv3.style.left = 700 + 'px';
+            colisionDiv3.style.top = 200 + 'px';
+
+            colisionDiv4.style.left = 700 + 'px';
+            colisionDiv4.style.top = 350 + 'px';
+
+            // Posición inicial fuera de la pantalla
+            movingDivR.style.left = -100 + 'px';
+            movingDivR.style.top = 210 + 'px';
+
+            movingDivB.style.left = -100 + 'px';
+            movingDivB.style.top = 360 + 'px';
+
+            movingDivG.style.left = 2000 + 'px';
+            movingDivG.style.top = 210 + 'px';
+
+            movingDivY.style.left = 2000 + 'px';
+            movingDivY.style.top = 360 + 'px';
+        }
+
+        // Llamar a la función para establecer la posición inicial
+        positionsCol();
+
+        // Función para mover el div hacia un punto de colisión
+        function moveDiv(targetX, targetY, movingDiv) {
+            var currentX = parseInt(movingDiv.style.left);
+            var currentY = parseInt(movingDiv.style.top);
+
+            var deltaX = targetX - currentX;
+            var deltaY = targetY - currentY;
+
+            var stepX = deltaX / 100; // Ajusta la velocidad cambiando este valor
+            var stepY = deltaY / 100; // Ajusta la velocidad cambiando este valor
+
+            var count = 0;
+
+            function animate() {
+                if (count < 100) {
+                    movingDiv.style.left = currentX + count * stepX + 'px';
+                    movingDiv.style.top = currentY + count * stepY + 'px';
+                    count++;
+                    requestAnimationFrame(animate);
+                }
+            }
+
+            animate();
+        }
+
+        // Llamada a la función para mover el div hacia colisionDiv2
+        moveDiv(461, 355, movingDivB);
+        moveDiv(461, 205, movingDivR);
+        moveDiv(692, 355, movingDivY);
+        moveDiv(692, 205, movingDivG);
+
+
+    </script>
+</body>
+
+</html>

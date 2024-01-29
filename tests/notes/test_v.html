@@ -8,34 +8,30 @@
     <meta name="author" content="Adrian Alonso Arambula">
     <link rel="stylesheet" href="../provs.css">
     <style>
-        #movingDivB {
-            width: 90px;
-            height: 90px;
-            background-color: rgb(0, 197, 197);
-            position: absolute;
-        }
-
-        #movingDivR {
-            width: 90px;
-            height: 90px;
-            background-color: rgb(255, 0, 0);
-            position: absolute;
-        }
-
-        #movingDivG {
-            width: 90px;
-            height: 90px;
-            background-color: rgb(0, 255, 0);
-            position: absolute;
-        }
-
+        #movingDivB,
+        #movingDivR,
+        #movingDivG,
         #movingDivY {
             width: 90px;
             height: 90px;
-            background-color: rgb(255, 255, 0);
             position: absolute;
         }
 
+        #movingDivB {
+            background-color: rgb(0, 197, 197);
+        }
+
+        #movingDivR {
+            background-color: rgb(255, 0, 0);
+        }
+
+        #movingDivG {
+            background-color: rgb(0, 255, 0);
+        }
+
+        #movingDivY {
+            background-color: rgb(255, 255, 0);
+        }
     </style>
     <title>Document</title>
 </head>
@@ -47,7 +43,7 @@
     <div id="colisionDiv2"></div>
     <div id="colisionDiv3"></div>
     <div id="colisionDiv4"></div>
-    
+
     <!-- Nuevo div que se moverá -->
     <div id="movingDivR"></div>
     <div id="movingDivB"></div>
@@ -78,7 +74,7 @@
             colisionDiv4.style.left = 700 + 'px';
             colisionDiv4.style.top = 350 + 'px';
 
-            // Posición inicial fuera de la pantalla
+            // Posición inicial fuera de la pantalla para todos los elementos
             movingDivR.style.left = -100 + 'px';
             movingDivR.style.top = 210 + 'px';
 
@@ -90,42 +86,46 @@
 
             movingDivY.style.left = 1200 + 'px';
             movingDivY.style.top = 360 + 'px';
+
         }
 
         // Llamar a la función para establecer la posición inicial
-        positionsCol();
+        var finalPositions = positionsCol();
 
-        // Función para mover el div hacia un punto de colisión
-        function moveDiv(targetX, targetY, movingDiv) {
+        // Función para mover el div hacia un punto de colisión con velocidad variable
+        function moveDiv(targetX, targetY, movingDiv, speed, finalX, finalY) {
             var currentX = parseInt(movingDiv.style.left);
             var currentY = parseInt(movingDiv.style.top);
 
             var deltaX = targetX - currentX;
             var deltaY = targetY - currentY;
 
-            var stepX = deltaX / 100; // Ajusta la velocidad cambiando este valor
-            var stepY = deltaY / 100; // Ajusta la velocidad cambiando este valor
+            var stepX = deltaX / speed;
+            var stepY = deltaY / speed;
 
             var count = 0;
 
             function animate() {
-                if (count < 100) {
+                if (count < speed) {
                     movingDiv.style.left = currentX + count * stepX + 'px';
                     movingDiv.style.top = currentY + count * stepY + 'px';
                     count++;
                     requestAnimationFrame(animate);
+                } else {
+                    // Ajustar posición final
+                    movingDiv.style.left = finalX + 'px';
+                    movingDiv.style.top = finalY + 'px';
                 }
             }
 
             animate();
         }
 
-        // Llamada a la función para mover el div hacia colisionDiv2
-        moveDiv(461, 355, movingDivB);
-        moveDiv(461, 205, movingDivR);
-        moveDiv(700, 355, movingDivY);
-        moveDiv(700, 205, movingDivG);
-
+        // Llamada a la función para mover los divs hacia los puntos de colisión con diferentes velocidades
+        moveDiv(461, 205, movingDivR, 150, 455,205);
+        moveDiv(461, 355, movingDivB, 100, 455,355);
+        moveDiv(700, 205, movingDivG, 250, 705,205);
+        moveDiv(700, 355, movingDivY, 200, 705,355);
 
     </script>
 </body>

@@ -50,39 +50,37 @@
 
         // Agrega un event listener para el evento keydown (tecla presionada)
         document.addEventListener('keydown', function (event) {
-            if (event.key === 'z') {
-                document.getElementById('colisionDiv').style.backgroundColor = 'rgb(255, 0, 0)';
-            }
-
-            if (event.key === 'x') {
-                document.getElementById('colisionDiv2').style.backgroundColor = 'rgb(0, 0, 255)';
-            }
-
-            if (event.key === 'n') {
-                document.getElementById('colisionDiv3').style.backgroundColor = 'rgb(0, 255, 0)';
-            }
-
-            if (event.key === 'm') {
-                document.getElementById('colisionDiv4').style.backgroundColor = 'rgb(255, 255, 0)';
+            switch (event.key) {
+                case 'z':
+                    document.getElementById('colisionDiv').style.backgroundColor = 'rgb(255, 0, 0)';
+                    break;
+                case 'x':
+                    document.getElementById('colisionDiv2').style.backgroundColor = 'rgb(0, 0, 255)';
+                    break;
+                case 'n':
+                    document.getElementById('colisionDiv3').style.backgroundColor = 'rgb(0, 255, 0)';
+                    break;
+                case 'm':
+                    document.getElementById('colisionDiv4').style.backgroundColor = 'rgb(255, 255, 0)';
+                    break;
             }
         });
 
         // Agrega un event listener para el evento keyup (tecla liberada)
         document.addEventListener('keyup', function (event) {
-            if (event.key === 'z') {
-                document.getElementById('colisionDiv').style.backgroundColor = 'rgb(197, 0, 0)';
-            }
-
-            if (event.key === 'x') {
-                document.getElementById('colisionDiv2').style.backgroundColor = 'rgb(0, 0, 197)';
-            }
-
-            if (event.key === 'n') {
-                document.getElementById('colisionDiv3').style.backgroundColor = 'rgb(0, 197, 0)';
-            }
-
-            if (event.key === 'm') {
-                document.getElementById('colisionDiv4').style.backgroundColor = 'rgb(197, 197, 0)';
+            switch (event.key) {
+                case 'z':
+                    document.getElementById('colisionDiv').style.backgroundColor = 'rgb(197, 0, 0)';
+                    break;
+                case 'x':
+                    document.getElementById('colisionDiv2').style.backgroundColor = 'rgb(0, 0, 197)';
+                    break;
+                case 'n':
+                    document.getElementById('colisionDiv3').style.backgroundColor = 'rgb(0, 197, 0)';
+                    break;
+                case 'm':
+                    document.getElementById('colisionDiv4').style.backgroundColor = 'rgb(197, 197, 0)';
+                    break;
             }
         });
     </script>

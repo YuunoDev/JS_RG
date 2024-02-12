@@ -7,6 +7,9 @@
     <!-- Creador -->
     <meta name="author" content="Adrian Alonso Arambula">
     <link rel="stylesheet" href="../provs.css">
+    <link rel="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/96658dc003.js" crossorigin="anonymous"></script>
+    <script src="main.js" defer></script>
     <title>JSON</title>
 </head>
 
@@ -49,78 +52,10 @@
 
     <!--Cronometro-->
     <div id="cronometro timer" class="timer">
-        <!--<div id="horas">00</div>
-        <div id="minutos">00</div>
-        <div id="segundos">00</div>
-        <div id="milisegundos">00</div> -->
     </div>
 
     <script>
-        // Obtener el elemento del div de colisión
-        var colisionDiv = document.getElementById('colisionDiv');
-        var colisionDiv2 = document.getElementById('colisionDiv2');
-        var colisionDiv3 = document.getElementById('colisionDiv3');
-        var colisionDiv4 = document.getElementById('colisionDiv4');
-
-        function positionsCol() {
-
-            // Establecer la posición inicial
-            colisionDiv.style.left = 450 + 'px';
-            colisionDiv.style.top = 200 + 'px';
-
-            colisionDiv2.style.left = 450 + 'px';
-            colisionDiv2.style.top = 350 + 'px';
-
-            colisionDiv3.style.left = 700 + 'px';
-            colisionDiv3.style.top = 200 + 'px';
-
-            colisionDiv4.style.left = 700 + 'px';
-            colisionDiv4.style.top = 350 + 'px';
-
-            // tecla1.style.left = 900 + 'px';
-            // tecla1.style.top = 210 + 'px';
-        }
-
-        // Llamar a la función para establecer la posición inicial
-        positionsCol();
-
-        // Agrega un event listener para el evento keydown (tecla presionada)
-        document.addEventListener('keydown', function (event) {
-            switch (event.key) {
-                case 'z':
-                    document.getElementById('colisionDiv').style.backgroundColor = 'rgb(255, 0, 0)';
-                    break;
-                case 'x':
-                    document.getElementById('colisionDiv2').style.backgroundColor = 'rgb(0, 0, 255)';
-                    break;
-                case 'n':
-                    document.getElementById('colisionDiv3').style.backgroundColor = 'rgb(0, 255, 0)';
-                    break;
-                case 'm':
-                    document.getElementById('colisionDiv4').style.backgroundColor = 'rgb(255, 255, 0)';
-                    break;
-            }
-        });
-
-        // Agrega un event listener para el evento keyup (tecla liberada)
-        document.addEventListener('keyup', function (event) {
-            switch (event.key) {
-                case 'z':
-                    document.getElementById('colisionDiv').style.backgroundColor = 'rgb(197, 0, 0)';
-                    break;
-                case 'x':
-                    document.getElementById('colisionDiv2').style.backgroundColor = 'rgb(0, 0, 197)';
-                    break;
-                case 'n':
-                    document.getElementById('colisionDiv3').style.backgroundColor = 'rgb(0, 197, 0)';
-                    break;
-                case 'm':
-                    document.getElementById('colisionDiv4').style.backgroundColor = 'rgb(197, 197, 0)';
-                    break;
-            }
-        });
-
-
+        
     </script>
 </body>
 
